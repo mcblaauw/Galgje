@@ -1,0 +1,15 @@
+.profielfoto {
+    border-radius: 50%;
+}
+
+img {
+    max-width: 100%;
+    height auto; /* default */
+}
+
+canvas {
+    border-style: dotted;
+    border-width: 2px; 
+    width: 100%;
+    height: 100%;
+}
