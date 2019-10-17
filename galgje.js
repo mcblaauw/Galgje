@@ -16,8 +16,18 @@ function updateCharArray(abet, remlet) {
     return abet;
 }
 
+function UserInsert() {
+    // jquery tryout
+    $('#usersol').on('keypress',function(e) {
+        if (e.which == 13) {
+            var wguess = $(this).val();
+            CheckSolution(wguess);
+        }
+    })
+}
+
 function RandomWords()  {
-    var Words = ['Nederland','Kaas','Tosti','Bitterballen','Eierbal','Ei','Ui'];
+    var Words = ['Nederland','Kaas','Tosti','Bitterballen','Eierbal','Ei','Ui','Amsterdam','Xylofoon','Papierfabriek','Schrift'];
     return Words[Math.floor(Math.random()*Words.length)];
 }
 
@@ -30,7 +40,8 @@ function Droplist(abet) {
         HTML += "<option value="+a[i]+">"+a[i]+"</option>";
     }
     HTML += "</select>";
-    HTML += "<input type='submit' value='Submit' onClick=GetLetter() >";
+    HTML += "<input type='submit' value='Submit' onClick=GetLetter() ><br><br>";
+    HTML += "Of raad de oplossing:<br> <input id='usersol' size='30%' type='text' placeholder='Typ jouw oplossing + <enter>'>";
 
     document.getElementById("LetterDroplist").innerHTML = HTML;
 }
@@ -57,6 +68,28 @@ function UpdateStipjes(letter) {
         document.getElementById("LetterDroplist").innerHTML = "<br>";
         document.getElementById("ShowLetter").innerHTML = "<h3><b>Gefeliciteerd!!</b></h3>";
         throw new Error("Gefeliciteerd");
+    }
+}
+
+function CheckSolution(wguess) {
+    wordarr = wordG.split("");
+    wordguess = wguess.split("");
+    icheck = 0;
+    for (var i=0; i<LengthG;i++) {
+        if(wordarr[i]===wordguess[i]) {
+            icheck++;
+        } else {
+            alert("FOUT!!!");
+            // Update badguesses and hangman figure
+            lives--;
+            UpdateHangman(lives);
+            break;
+        } 
+    }
+    if (icheck === LengthG) {
+        document.getElementById("LetterDroplist").innerHTML = "<br>";
+        document.getElementById("ShowLetter").innerHTML = "<h3><b>Gefeliciteerd!!</b></h3>";
+        throw new Error("Gefeliciteerd");    
     }
 }
 
@@ -129,26 +162,30 @@ function GetLetter() {
     Droplist(a);
     
     // HTML output to "ShowLetter"
-    HTML = "You chose letter: "+Letval+"<br><hr><br>";
+    HTML = "U hebt gekozen voor de letter: "+Letval+"<br><hr><br>";
+    console.log(wordG.includes(Letval));
     if (wordG.includes(Letval)) {
         // Replace  . with letter(s)
         UpdateStipjes(Letval);
-        HTML += "Letter "+ Letval + " has been found!<br>";
+        HTML += "Letter "+ Letval + " is gevonden.<br>";
     } else {
         // Update badguesses and hangman figure
-        HTML += "Letter "+ Letval + " has NOT been found!<br>";
+        HTML += "Letter "+ Letval + " is helaas niet gevonden!<br>";
         lives--;
         UpdateHangman(lives);
     }
 
     if (lives === 0) {
         document.getElementById("LetterDroplist").innerHTML = "<br>";
-        document.getElementById("ShowLetter").innerHTML = "<h3 style='color: red;'><b>Helaas, volgende keer meer je best doen.</b></h3>";
+        document.getElementById("ShowLetter").innerHTML = "<h3 style='color: red;'><b>Helaas... volgende keer beter.</b></h3>";
         throw new Error("Helaas");
     }
 
-    HTML += "You have " + lives + " guesses left.";
+    HTML += "U heeft " + lives + " pogingen over.";
     HTML += document.getElementById("ShowLetter").innerHTML = HTML;
+
+    // jquery tryout
+    UserInsert();
 }
 
 // Initialization
@@ -167,7 +204,11 @@ LengthG = wordG.length;
 // Initialization functions
 Stipjes_0();
 Droplist(a);
+UserInsert();
 
 // Output to console
 console.log("Het woord: " + wordG);
 console.log("Woordlengte: " + LengthG);
+
+
+
