@@ -77,7 +77,6 @@ function CheckSolution(wguess) {
     icheck = 0;
     for (var i=0; i<LengthG;i++) {
         if(wordarr[i]===wordguess[i]) {
-            UpdateStipjes(wordarr[i]);
             icheck++;
         } else {
             alert("FOUT!!!");
@@ -88,6 +87,9 @@ function CheckSolution(wguess) {
         } 
     }
     if (icheck === LengthG) {
+        for (var i=0; i<LengthG;i++) {
+            UpdateStipjes(wordarr[i]);
+        }
         document.getElementById("LetterDroplist").innerHTML = "<br>";
         document.getElementById("ShowLetter").innerHTML = "<h3><b>Gefeliciteerd!!</b></h3>";
         throw new Error("Gefeliciteerd");    
