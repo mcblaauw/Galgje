@@ -72,27 +72,27 @@ function UpdateStipjes(letter) {
 }
 
 function CheckSolution(wguess) {
-    wordarr = wordG.split("");
-    wordguess = wguess.split("");
-    icheck = 0;
-    for (var i=0; i<LengthG;i++) {
-        if(wordarr[i]===wordguess[i]) {
-            icheck++;
-        } else {
-            alert("FOUT!!!");
-            // Update badguesses and hangman figure
-            lives--;
-            UpdateHangman(lives);
-            break;
-        } 
-    }
-    if (icheck === LengthG) {
+    if(wordG===wguess) {
         for (var i=0; i<LengthG;i++) {
-            UpdateStipjes(wordarr[i]);
+            UpdateStipjes(wordG[i]);
         }
         document.getElementById("LetterDroplist").innerHTML = "<br>";
         document.getElementById("ShowLetter").innerHTML = "<h3><b>Gefeliciteerd!!</b></h3>";
-        throw new Error("Gefeliciteerd");    
+        throw new Error("Gefeliciteerd");   
+    } else {
+        alert("FOUT!!!");
+        // Update badguesses and hangman figure
+        lives--;
+        UpdateHangman(lives);
+
+        if (lives === 0) {
+            document.getElementById("LetterDroplist").innerHTML = "<br>";
+            document.getElementById("ShowLetter").innerHTML = "<h3 style='color: red;'><b>Helaas... volgende keer beter.</b></h3>";
+            throw new Error("Helaas");
+        }
+    
+        HTML = "U heeft " + lives + " pogingen over.";
+        HTML += document.getElementById("ShowLetter").innerHTML = HTML;
     }
 }
 
