@@ -1,10 +1,10 @@
-.profielfoto {
+.profilepic {
     border-radius: 50%;
 }
 
 img {
     max-width: 100%;
-    height auto; /* default */
+    height auto; 
 }
 
 canvas {

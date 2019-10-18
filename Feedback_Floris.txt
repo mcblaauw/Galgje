@@ -1,0 +1,21 @@
+Ik heb even gekeken naar de code van Marten en Mathijs. Hierbij enkele suggesties voor jullie (en andere deelnemers die meelezen kunnen dit natuurlijk ook gaan checken in hun eigen code)
+
+Gebruik duidelijke variabele namen
+Gebruik Engels OF Nederlands. Ik zie dat jullie allebei door elkaar gebruiken, en dat maakt de code moeilijker te begrijpen
+new messages
+extreem voorbeeld is: renderLetters     (ga je brieven op het scherm renderen ?)
+ander voorbeeld:  vlak na elkaar een functie met de naam UpdateStipjes  en even daaronder een functie met de naam CheckSolution
+Probeer komende tijd je commits steeds kleiner te maken (dus per functionaliteit) ipv hele bestanden.   Nu we net beginnen met git kan dat natuurlijk even niet anders :wink:
+Probeer data en functionaliteit zoveel mogelijk te scheiden...
+Probeer design en functionaliteit in balans te houden. Ik zie nu behoorlijk complete spelletjes, dus wellicht nu tijd om niet meer features te bouwen maar ook design en styling af te bouwen (responsive en mobile)
+Hebben jullie nagedacht over bediening met muis, of touch op een iPad bijvoorbeeld... wat zijn slimme keuzes. op PC met toetsbord is dat wellicht fijner dan dropdown,   en op iPad is direct touch van letters fijn wellicht
+De manier van tekenen met strokes is een mooie basis, helaas kan je daarmee niet echt output van deze tijd maken... wellicht kunnen jullie een Javascript Graphics library toepassen in volgende iteratie voor een geweldige output wat betreft plaatje. Daarmee laat je zien dat je libraries kunt toepassen en de totale indruk van je product neemt toe.
+Laat je code eens reviewen door een andere deelnemer, en vraag om 3 verbeterpunten en pas die samen toe in je code.
+
+Kortom... ik ben enthousiast over jullie 2 spelletjes, en denk dat jullie met enkele iteraties het nog beter kunnen maken
+
+Floris Knol 2:42 PM
+
+ik zou geen gebruik maken van alerts
+probeer een element in je pagina de melding te laten weergeven
+(omdat alerts de uitvoering van je code stopzetten, en gaat steeds lastiger worden als je applicaties groter worden)
